@@ -2,7 +2,7 @@
 # To get started, simply uncomment the below code or create your own.
 # Deploy with `firebase deploy`
 
-from firebase_functions import https_fn
+from firebase_functions import https_fn, storage_fn, options
 from firebase_admin import initialize_app, storage
 import pandas as pd
 import numpy as np
@@ -80,7 +80,8 @@ def generate_confidence_intervals(
     return confidence_intervals
 
 
-@https_fn.on_request()
+@https_fn.on_request(timeout_sec=60, memory=options.MemoryOption.GB_1)
+# @storage_fn.on_object_finalized(timeout_sec=60, memory=options.MemoryOption.GB_1)
 def on_request_example(req: https_fn.Request) -> https_fn.Response:
     print("started")
     bucket = storage.bucket("deep-lore-388606.appspot.com")
@@ -89,7 +90,7 @@ def on_request_example(req: https_fn.Request) -> https_fn.Response:
     print("blob got")
     csv = blob.download_as_string()
     print("csv got")
-    print(csv)
+    # print(csv)
     intervals = generate_confidence_intervals(
         csv_file=io.StringIO(str(csv)),
         target_columns=DEFAULT_TARGET_COLUMNS,
