@@ -68,3 +68,4 @@ node_modules/
 # python env
 **/env/
 **/venv/
+**/__pycache__/
