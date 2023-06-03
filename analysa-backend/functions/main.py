@@ -15,10 +15,10 @@ app = initialize_app()
 
 DEFAULT_TARGET_COLUMNS = [
     "watch_time",
-    "pause_count",
-    "avg_watch_time_per_video",
-    "Webpage_clicks_per_session",
-    "Videos_completed_per_session",
+    # "pause_count",
+    # "avg_watch_time_per_video",
+    # "Webpage_clicks_per_session",
+    # "Videos_completed_per_session",
 ]
 
 
@@ -82,7 +82,7 @@ def generate_confidence_intervals(
 
 @https_fn.on_request(timeout_sec=60, memory=options.MemoryOption.GB_1)
 # @storage_fn.on_object_finalized(timeout_sec=60, memory=options.MemoryOption.GB_1)
-def on_request_example(req: https_fn.Request) -> https_fn.Response:
+def request_confidence_intervals(req: https_fn.Request) -> https_fn.Response:
     print("started")
     bucket = storage.bucket("deep-lore-388606.appspot.com")
     print("bucket got")
@@ -99,3 +99,10 @@ def on_request_example(req: https_fn.Request) -> https_fn.Response:
     )
     print(intervals)
     return https_fn.Response(str(intervals))
+
+
+@https_fn.on_request(timeout_sec=60, memory=options.MemoryOption.GB_1)
+# @storage_fn.on_object_finalized(timeout_sec=60, memory=options.MemoryOption.GB_1)
+def ping_test(req: https_fn.Request) -> https_fn.Response:
+    print("ping test")
+    return https_fn.Response("ping test")
