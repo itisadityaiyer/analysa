@@ -2,14 +2,19 @@ import { Grid, Typography } from "@mui/material";
 import ExperimentInfo from "./ExperimentInfo";
 import QueryBox from "./QueryBox";
 import { useState } from "react";
+import QueryPlot from "./QueryPlot";
 
 const MainPage = () => {
   const [queryResult, setQueryResult] = useState("");
+  const [queryResultString, setQueryResultString] = useState("");
 
   const handleQueryResult = (resJson: JSON) => {
     let resString = JSON.stringify(resJson);
     console.log(resString);
-    setQueryResult(resString);
+    console.log("adityaiyer: in handleQueryResult");
+    console.log(new Map(Object.entries(resJson)));
+    setQueryResult(resJson);
+    setQueryResultString(resString);
   };
 
   return (
@@ -33,8 +38,9 @@ const MainPage = () => {
           </Grid>
         </Grid>
         <Grid item>
+          {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
           <Typography className="queryResult">
-            {queryResult ? queryResult : ""}
+            {queryResultString ? queryResultString : ""}
           </Typography>
         </Grid>
       </Grid>
