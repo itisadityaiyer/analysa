@@ -1,4 +1,4 @@
-import { red } from "@mui/material/colors";
+import { blue, red } from "@mui/material/colors";
 import { createTheme } from "@mui/material/styles";
 
 // A custom theme for this app
@@ -27,14 +27,7 @@ const theme = createTheme({
     },
     custom: {
       main: "#FF8ECB",
-      purple: "#B5ADFF",
-      darkPurple: "#1E1C41",
-      borderPurple: "#3F3C70",
-      gamePurple: "#AD4DDA",
-      white: "#FFFFFF",
-      borderPink: "#FF8ECB",
-      pink: "#E933BE",
-      background: "#121126",
+      light: "#D3D3D3",
     },
     button: {
       primary: "#E933BE",
@@ -46,6 +39,18 @@ const theme = createTheme({
     },
     background: {
       default: "#121126",
+    },
+  },
+  components: {
+    MuiGrid: {
+      styleOverrides: {
+        // container: {
+        //   border: `2px dashed ${red[500]}`,
+        // },
+        // item: {
+        //   border: `2px dashed ${blue[500]}`,
+        // },
+      },
     },
   },
 });
