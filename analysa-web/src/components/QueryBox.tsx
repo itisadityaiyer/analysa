@@ -1,47 +1,59 @@
-import { Box, Container } from "@mui/system";
-import Trip from "./components/Trip";
 import { useTheme } from "@mui/material/styles";
 import {
   Button,
   FormControl,
-  FormHelperText,
   Grid,
-  Input,
   InputLabel,
   Select,
   MenuItem,
-  OutlinedInput,
-  Paper,
   Typography,
 } from "@mui/material";
 
-import { DateRangePicker, LocalizationProvider } from "@mui/x-date-pickers-pro";
+import {
+  DateRange,
+  DateRangePicker,
+  LocalizationProvider,
+} from "@mui/x-date-pickers-pro";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
+import dayjs, { Dayjs } from "dayjs";
 
 const QueryBox = ({ handleQueryResult }) => {
+  const queryUrl =
+    "https://request-confidence-intervals-ybmnqf5yga-uc.a.run.app";
+
   const theme = useTheme();
 
   const [comparisonA, setComparisonA] = useState("");
   const [comparisonB, setComparisonB] = useState("");
-  const [dates, setDates] = useState("");
+  const [queryDateRange, setQueryDateRange] = useState<DateRange<Dayjs>>([
+    dayjs("2023-05-15"),
+    dayjs("2023-05-24"),
+  ]);
   const [message, setMessage] = useState("");
 
   let handleSubmit = async (e) => {
     e.preventDefault();
     console.log("entered handle Submit");
+    let queryArgsPairs = [
+      ["comparisonA", comparisonA],
+      ["comparisonB", comparisonB],
+      ["startDate", queryDateRange[0].format("YYYY-MM-DD")],
+      ["endDate", queryDateRange[1].format("YYYY-MM-DD")],
+    ];
+    let queryArgsPairsMapped = queryArgsPairs.map((x) => x.join("="));
+    let queryArgsString = queryArgsPairsMapped.join("&");
+    console.log(queryUrl + "?" + queryArgsString);
+
     try {
-      let res = await fetch(
-        "https://request-confidence-intervals-ybmnqf5yga-uc.a.run.app",
-        {
-          method: "GET",
-          mode: "cors",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      let res = await fetch(queryUrl + "?" + queryArgsString, {
+        method: "GET",
+        mode: "cors",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
       console.log("call returned");
       let resJson = await res.json();
       let resString = JSON.stringify(resJson);
@@ -71,7 +83,7 @@ const QueryBox = ({ handleQueryResult }) => {
               alignItems="center"
             >
               <Grid item xs={5.6}>
-                <FormControl fullWidth>
+                <FormControl required={true} fullWidth>
                   <InputLabel htmlFor="comparisonA" variant="outlined">
                     Comparison A
                   </InputLabel>
@@ -90,7 +102,7 @@ const QueryBox = ({ handleQueryResult }) => {
                 <Typography align="center">vs</Typography>
               </Grid>
               <Grid item xs={5.6}>
-                <FormControl fullWidth>
+                <FormControl required={true} fullWidth>
                   <InputLabel htmlFor="comparisonB" variant="outlined">
                     Comparison B
                   </InputLabel>
@@ -108,10 +120,15 @@ const QueryBox = ({ handleQueryResult }) => {
             </Grid>
           </Grid>
           <Grid item>
-            <DateRangePicker
-              label="Start Date"
-              // onChange={(e) => setDates(e)}
-            />
+            <FormControl required={true} fullWidth>
+              <DateRangePicker
+                label="Start Date"
+                value={queryDateRange}
+                minDate={dayjs("2023-05-15")}
+                maxDate={dayjs("2023-05-24")}
+                onChange={(newValue) => setQueryDateRange(newValue)}
+              />
+            </FormControl>
           </Grid>
           <Grid item>
             <Button type="submit" variant="outlined">
