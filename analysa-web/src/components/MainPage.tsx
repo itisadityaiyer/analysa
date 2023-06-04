@@ -18,30 +18,19 @@ const MainPage = () => {
   };
 
   return (
-    <Grid container direction="column" rowSpacing={1} width="md">
+    <Grid container direction="column" rowSpacing={1}>
       <Grid item height={"8em"} />
       <Grid item>
-        <Typography variant="h1">Analysa</Typography>
+        <ExperimentInfo />
       </Grid>
-      <Grid item height={"2em"} />
-      <Grid item>
-        <Typography variant="h4">take control of your experiments!</Typography>
-      </Grid>
-      <Grid item height={"2em"} />
       <Grid item>
         <Grid container direction="row" columnSpacing={2}>
-          <Grid item xs={6}>
-            <ExperimentInfo />
-          </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={4}>
             <QueryBox handleQueryResult={handleQueryResult} />
           </Grid>
-        </Grid>
-        <Grid item>
-          {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
-          <Typography className="queryResult">
-            {queryResultString ? queryResultString : ""}
-          </Typography>
+          <Grid item xs={8}>
+            {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
+          </Grid>
         </Grid>
       </Grid>
     </Grid>

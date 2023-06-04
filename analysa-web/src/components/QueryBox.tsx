@@ -73,7 +73,7 @@ const QueryBox = ({ handleQueryResult }) => {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <form onSubmit={handleSubmit}>
-        <Grid container direction="column" rowSpacing={1.5} maxWidth="lg">
+        <Grid container direction="column" rowSpacing={1.5}>
           <Grid item>
             <Grid
               container
@@ -93,8 +93,8 @@ const QueryBox = ({ handleQueryResult }) => {
                     label="Comparison A"
                     onChange={(e) => setComparisonA(e.target.value)}
                   >
-                    <MenuItem value={"Control"}>Control</MenuItem>
-                    <MenuItem value={"Test"}>Test</MenuItem>
+                    <MenuItem value={"control"}>control</MenuItem>
+                    <MenuItem value={"test"}>test</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
@@ -112,8 +112,8 @@ const QueryBox = ({ handleQueryResult }) => {
                     label="Comparison B"
                     onChange={(e) => setComparisonB(e.target.value)}
                   >
-                    <MenuItem value={"Control"}>Control</MenuItem>
-                    <MenuItem value={"Test"}>Test</MenuItem>
+                    <MenuItem value={"control"}>control</MenuItem>
+                    <MenuItem value={"test"}>test</MenuItem>
                   </Select>
                 </FormControl>
               </Grid>
