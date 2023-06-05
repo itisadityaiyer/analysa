@@ -12,9 +12,9 @@ const theme = createTheme({
       // '"Helvetica Neue"',
       // "Arial",
       // "sans-serif",
-      '"Apple Color Emoji"',
-      '"Segoe UI Emoji"',
-      '"Segoe UI Symbol"',
+      // '"Apple Color Emoji"',
+      // '"Segoe UI Emoji"',
+      // '"Segoe UI Symbol"',
     ].join(","),
     subtitle1: {
       color: "grey",
