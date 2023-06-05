@@ -24,7 +24,7 @@ const ExperimentInfo = () => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Grid
       container
-      row="row"
+      direction="row"
       xs={12}
       sx={{
         backgroundColor: "custom.light",
@@ -34,6 +34,7 @@ const ExperimentInfo = () => (
           opacity: [0.9, 0.8, 0.7],
         },
       }}
+      padding={4}
     >
       <Grid item xs={6}>
         <Grid container direction="column" rowSpacing={1.5} columnSpacing={1.5}>
