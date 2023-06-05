@@ -7,6 +7,8 @@ import {
   Select,
   MenuItem,
   Typography,
+  Paper,
+  Box,
 } from "@mui/material";
 
 import {
@@ -24,8 +26,8 @@ const QueryBox = ({ handleQueryResult }) => {
 
   const theme = useTheme();
 
-  const [comparisonA, setComparisonA] = useState("");
-  const [comparisonB, setComparisonB] = useState("");
+  const [comparisonA, setComparisonA] = useState("control");
+  const [comparisonB, setComparisonB] = useState("test");
   const [queryDateRange, setQueryDateRange] = useState<DateRange<Dayjs>>([
     dayjs("2023-05-15"),
     dayjs("2023-05-24"),
@@ -72,76 +74,80 @@ const QueryBox = ({ handleQueryResult }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <form onSubmit={handleSubmit}>
-        <Grid container direction="column" rowSpacing={1.5}>
-          <Grid item>
-            <Grid
-              container
-              direction="row"
-              columnSpacing={1}
-              justifyContent="center"
-              alignItems="center"
-            >
-              <Grid item xs={5.6}>
-                <FormControl required={true} fullWidth>
-                  <InputLabel htmlFor="comparisonA" variant="outlined">
-                    Comparison A
-                  </InputLabel>
-                  <Select
-                    id="comparisonA"
-                    value={comparisonA}
-                    label="Comparison A"
-                    onChange={(e) => setComparisonA(e.target.value)}
-                  >
-                    <MenuItem value={"control"}>control</MenuItem>
-                    <MenuItem value={"test"}>test</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={0.8}>
-                <Typography align="center">vs</Typography>
-              </Grid>
-              <Grid item xs={5.6}>
-                <FormControl required={true} fullWidth>
-                  <InputLabel htmlFor="comparisonB" variant="outlined">
-                    Comparison B
-                  </InputLabel>
-                  <Select
-                    id="comparisonB"
-                    value={comparisonB}
-                    label="Comparison B"
-                    onChange={(e) => setComparisonB(e.target.value)}
-                  >
-                    <MenuItem value={"control"}>control</MenuItem>
-                    <MenuItem value={"test"}>test</MenuItem>
-                  </Select>
-                </FormControl>
+      <Box height={12}></Box>
+      <Paper elevation={5}>
+        <form onSubmit={handleSubmit}>
+          <Grid container direction="column" rowSpacing={1.5} padding={1.5}>
+            <Grid item>
+              <Grid
+                container
+                direction="row"
+                columnSpacing={1}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Grid item xs={5.6}>
+                  <FormControl required={true} fullWidth>
+                    <InputLabel htmlFor="comparisonA" variant="outlined">
+                      Comparison A
+                    </InputLabel>
+                    <Select
+                      id="comparisonA"
+                      value={comparisonA}
+                      label="Comparison A"
+                      defaultValue={"control"}
+                      onChange={(e) => setComparisonA(e.target.value)}
+                    >
+                      <MenuItem value={"control"}>control</MenuItem>
+                      <MenuItem value={"test"}>test</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
+                <Grid item xs={0.8}>
+                  <Typography align="center">vs</Typography>
+                </Grid>
+                <Grid item xs={5.6}>
+                  <FormControl required={true} fullWidth>
+                    <InputLabel htmlFor="comparisonB" variant="outlined">
+                      Comparison B
+                    </InputLabel>
+                    <Select
+                      id="comparisonB"
+                      value={comparisonB}
+                      label="Comparison B"
+                      onChange={(e) => setComparisonB(e.target.value)}
+                    >
+                      <MenuItem value={"control"}>control</MenuItem>
+                      <MenuItem value={"test"}>test</MenuItem>
+                    </Select>
+                  </FormControl>
+                </Grid>
               </Grid>
             </Grid>
+            <Grid item>
+              <FormControl required={true} fullWidth>
+                <DateRangePicker
+                  label="Start Date"
+                  value={queryDateRange}
+                  minDate={dayjs("2023-05-15")}
+                  maxDate={dayjs("2023-05-24")}
+                  onChange={(newValue) => setQueryDateRange(newValue)}
+                />
+              </FormControl>
+            </Grid>
+            <Grid item>
+              <Button type="submit" variant="outlined">
+                Submit
+              </Button>
+            </Grid>
+            <Grid item>
+              <Typography className="message">
+                {message ? message : ""}
+              </Typography>
+            </Grid>
           </Grid>
-          <Grid item>
-            <FormControl required={true} fullWidth>
-              <DateRangePicker
-                label="Start Date"
-                value={queryDateRange}
-                minDate={dayjs("2023-05-15")}
-                maxDate={dayjs("2023-05-24")}
-                onChange={(newValue) => setQueryDateRange(newValue)}
-              />
-            </FormControl>
-          </Grid>
-          <Grid item>
-            <Button type="submit" variant="outlined">
-              Submit
-            </Button>
-          </Grid>
-          <Grid item>
-            <Typography className="message">
-              {message ? message : ""}
-            </Typography>
-          </Grid>
-        </Grid>
-      </form>
+        </form>
+      </Paper>
     </LocalizationProvider>
   );
 };

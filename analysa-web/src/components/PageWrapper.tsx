@@ -1,4 +1,4 @@
-import { Container, Grid } from "@mui/material";
+import { Container, Grid, Paper } from "@mui/material";
 import MainPage from "./MainPage";
 import NavBar from "./Navbar";
 

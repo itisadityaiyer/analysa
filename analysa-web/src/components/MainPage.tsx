@@ -1,7 +1,7 @@
 import { Grid, Typography } from "@mui/material";
 import ExperimentInfo from "./ExperimentInfo";
 import QueryBox from "./QueryBox";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import QueryPlot from "./QueryPlot";
 
 const MainPage = () => {
@@ -16,6 +16,17 @@ const MainPage = () => {
     setQueryResult(resJson);
     setQueryResultString(resString);
   };
+  const stageCanvasRef = useRef(null);
+
+  // useEffect will run on stageCanvasRef value assignment
+  useEffect(() => {
+    // The 'current' property contains info of the reference:
+    // align, title, ... , width, height, etc.
+    if (stageCanvasRef.current) {
+      let height = stageCanvasRef.current.offsetHeight;
+      let width = stageCanvasRef.current.offsetWidth;
+    }
+  }, [stageCanvasRef]);
 
   return (
     <Grid container direction="column" rowSpacing={1}>
