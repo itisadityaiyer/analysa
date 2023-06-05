@@ -16,6 +16,10 @@ const theme = createTheme({
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(","),
+    subtitle1: {
+      color: "grey",
+      lineHeight: "1.2",
+    },
   },
   palette: {
     primary: {
@@ -38,7 +42,7 @@ const theme = createTheme({
       main: red.A400,
     },
     background: {
-      default: "#121126",
+      default: "#dedede",
     },
   },
   components: {

@@ -37,15 +37,15 @@ const ExperimentInfo = () => (
               </Typography>
             </Grid>
             <Grid item>
-              <Typography color="grey">
+              <Typography variant="subtitle1">
                 gated by: full_screen_default
               </Typography>
             </Grid>
           </Grid>
         </Grid>
         <Grid item xs={6}>
-          <Grid container direction="row">
-            <Grid item xs={3}>
+          <Grid container direction="row" columnSpacing={8}>
+            <Grid item>
               <Grid container direction="column">
                 <Grid item>
                   <Typography color="grey">CREATED BY:</Typography>
@@ -55,7 +55,7 @@ const ExperimentInfo = () => (
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item>
               <Grid container direction="column">
                 <Grid item>
                   <Typography color="grey">ID TYPE:</Typography>
@@ -67,7 +67,7 @@ const ExperimentInfo = () => (
             </Grid>
             <Grid item>
               <Grid container direction="column">
-                <Grid item xs={3}>
+                <Grid item>
                   <Typography color="grey">TAGS:</Typography>
                 </Grid>
                 <Grid item>

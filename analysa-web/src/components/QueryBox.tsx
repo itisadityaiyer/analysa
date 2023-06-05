@@ -77,7 +77,17 @@ const QueryBox = ({ handleQueryResult }) => {
       <Box height={12}></Box>
       <Paper elevation={5}>
         <form onSubmit={handleSubmit}>
-          <Grid container direction="column" rowSpacing={1.5} padding={1.5}>
+          <Grid container direction="column" rowSpacing={1.5} padding={3}>
+            <Grid item>
+              <Typography variant="h5">Metric deltas</Typography>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1">
+                See how your metrics compare between experiment groups, date
+                ranges, and attribute filters.
+              </Typography>
+            </Grid>
+            <Grid item></Grid>
             <Grid item>
               <Grid
                 container
