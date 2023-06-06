@@ -29,17 +29,18 @@ const MainPage = () => {
   }, [stageCanvasRef]);
 
   return (
-    <Grid container direction="column" rowSpacing={1}>
+    <Grid container direction="column" rowSpacing={2}>
       <Grid item height={"8em"} />
       <Grid item>
         <ExperimentInfo />
       </Grid>
       <Grid item>
         <Grid container direction="row" columnSpacing={2}>
-          <Grid item xs={4}>
+          <Grid item lg={6} xl={4}>
             <QueryBox handleQueryResult={handleQueryResult} />
           </Grid>
-          <Grid item xs={8}>
+          <Grid item lg={6} xl={8}>
+            {/* <QueryPlot queryResultJson={queryResult} /> */}
             {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
           </Grid>
         </Grid>

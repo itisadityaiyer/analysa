@@ -23,7 +23,7 @@ import { blue } from "@mui/material/colors";
 const ExperimentInfo = () => (
   <LocalizationProvider dateAdapter={AdapterDayjs}>
     <Paper elevation={5}>
-      <Grid container direction="row" xs={12} padding={4}>
+      <Grid container direction="row" padding={4}>
         <Grid item xs={6}>
           <Grid
             container
