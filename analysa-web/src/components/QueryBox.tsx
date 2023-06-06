@@ -8,8 +8,7 @@ import {
   MenuItem,
   Typography,
   Paper,
-  Box,
-  Link,
+  CircularProgress,
 } from "@mui/material";
 
 import {
@@ -27,6 +26,7 @@ const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
 
   const theme = useTheme();
 
+  const [loading, setLoading] = useState(false);
   const [comparisonA, setComparisonA] = useState("control");
   const [comparisonB, setComparisonB] = useState("test");
   const [queryDateRange, setQueryDateRange] = useState<DateRange<Dayjs>>([
@@ -37,6 +37,7 @@ const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
 
   let handleSubmit = async (e: any) => {
     e.preventDefault();
+    setLoading(true);
     console.log("entered handle Submit");
     let queryArgsPairs = [
       ["comparisonA", comparisonA],
@@ -58,6 +59,7 @@ const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
         },
       });
       console.log("call returned");
+      setLoading(false);
       let resJson = await res.json();
       let resString = JSON.stringify(resJson);
       if (res.status === 200) {
@@ -69,6 +71,7 @@ const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
         setMessage("Submitted, error");
       }
     } catch (err) {
+      setLoading(false);
       console.log(err);
     }
   };
@@ -148,8 +151,20 @@ const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
             <Grid item>
               <Button type="submit" variant="outlined">
                 Generate Metric Deltas
+                {loading ? (
+                  <CircularProgress size={16} sx={{ marginLeft: "10px" }} />
+                ) : (
+                  ""
+                )}
               </Button>
             </Grid>
+            {message ? (
+              <Grid item>
+                <Typography>{message}</Typography>
+              </Grid>
+            ) : (
+              ""
+            )}
           </Grid>
         </form>
       </Paper>
