@@ -1,19 +1,28 @@
-import { Sidebar, Menu, MenuItem } from "react-pro-sidebar";
+import { Sidebar, Menu, MenuItem, sidebarClasses } from "react-pro-sidebar";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import PeopleOutlinedIcon from "@mui/icons-material/PeopleOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import ReceiptOutlinedIcon from "@mui/icons-material/ReceiptOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
+import AssessmentIcon from "@mui/icons-material/Assessment";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import { Paper, Typography } from "@mui/material";
 import { useState } from "react";
+import { DynamicFeedRounded, FlagCircleOutlined } from "@mui/icons-material";
 
 const NavBar = () => {
   const [collapsedMenu, setCollapsedMenu] = useState(true);
 
   return (
-    <Sidebar style={{ height: "100vh" }} collapsed={collapsedMenu}>
+    <Sidebar
+      style={{ height: "100vh" }}
+      collapsed={collapsedMenu}
+      rootStyles={{
+        [`.${sidebarClasses.container}`]: {
+          backgroundColor: "white",
+        },
+      }}
+    >
       <Menu>
         <MenuItem
           icon={<MenuOutlinedIcon />}
@@ -24,23 +33,23 @@ const NavBar = () => {
           <Typography variant="h4">Analysa</Typography>
         </MenuItem>
 
-        <MenuItem icon={<HomeOutlinedIcon />}>
+        <MenuItem icon={<HomeOutlinedIcon color="primary" />}>
           <Typography>Home</Typography>
         </MenuItem>
-        <MenuItem icon={<PeopleOutlinedIcon />}>
-          <Typography>Team</Typography>
+        <MenuItem icon={<FlagCircleOutlined color="primary" />}>
+          <Typography>Feature Flagging</Typography>
         </MenuItem>
-        <MenuItem icon={<ContactsOutlinedIcon />}>
-          <Typography>Contacts</Typography>
+        <MenuItem icon={<DynamicFeedRounded color="primary" />}>
+          <Typography>Experiment Review</Typography>
         </MenuItem>
-        <MenuItem icon={<ReceiptOutlinedIcon />}>
-          <Typography>Profile</Typography>
+        <MenuItem icon={<AssessmentIcon color="primary" />}>
+          <Typography>Analyses</Typography>
         </MenuItem>
-        <MenuItem icon={<HelpOutlineOutlinedIcon />}>
-          <Typography>FAQ</Typography>
+        <MenuItem icon={<PeopleOutlinedIcon color="primary" />}>
+          <Typography>Cohorts</Typography>
         </MenuItem>
-        <MenuItem icon={<CalendarTodayOutlinedIcon />}>
-          <Typography>Calendar</Typography>
+        <MenuItem icon={<HelpOutlineOutlinedIcon color="primary" />}>
+          <Typography>Queries</Typography>
         </MenuItem>
       </Menu>
     </Sidebar>

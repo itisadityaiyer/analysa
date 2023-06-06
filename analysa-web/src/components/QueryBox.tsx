@@ -9,6 +9,7 @@ import {
   Typography,
   Paper,
   Box,
+  Link,
 } from "@mui/material";
 
 import {
@@ -74,19 +75,16 @@ const QueryBox = ({ handleQueryResult }) => {
 
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <Box height={12}></Box>
       <Paper elevation={5}>
         <form onSubmit={handleSubmit}>
           <Grid container direction="column" rowSpacing={1.5} padding={4}>
             <Grid item>
-              <Typography variant="h5" padding={0}>
-                Metric deltas
-              </Typography>
+              <Typography variant="h5">Query Your Experiment Data</Typography>
             </Grid>
             <Grid item>
               <Typography variant="subtitle1">
-                See how your metrics compare between experiment groups, date
-                ranges, and attribute filters.
+                Search through your data by filtering through experiment groups,
+                date ranges, and attribute filters.
               </Typography>
             </Grid>
             <Grid item></Grid>
@@ -149,7 +147,7 @@ const QueryBox = ({ handleQueryResult }) => {
             </Grid>
             <Grid item>
               <Button type="submit" variant="outlined">
-                Submit
+                Generate Metric Deltas
               </Button>
             </Grid>
           </Grid>

@@ -3,6 +3,8 @@ import ExperimentInfo from "./ExperimentInfo";
 import QueryBox from "./QueryBox";
 import { useEffect, useRef, useState } from "react";
 import QueryPlot from "./QueryPlot";
+import ReportDownload from "./ReportDownload";
+import Header from "./Header";
 
 const MainPage = () => {
   const [queryResult, setQueryResult] = useState("");
@@ -16,30 +18,30 @@ const MainPage = () => {
     setQueryResult(resJson);
     setQueryResultString(resString);
   };
-  const stageCanvasRef = useRef(null);
-
-  // useEffect will run on stageCanvasRef value assignment
-  useEffect(() => {
-    // The 'current' property contains info of the reference:
-    // align, title, ... , width, height, etc.
-    if (stageCanvasRef.current) {
-      let height = stageCanvasRef.current.offsetHeight;
-      let width = stageCanvasRef.current.offsetWidth;
-    }
-  }, [stageCanvasRef]);
 
   return (
     <Grid container direction="column" rowSpacing={2}>
       <Grid item height={"8em"} />
       <Grid item>
+        <Header />
+      </Grid>
+      <Grid item></Grid>
+      <Grid item>
         <ExperimentInfo />
       </Grid>
       <Grid item>
-        <Grid container direction="row" columnSpacing={2}>
-          <Grid item lg={6} xl={4}>
-            <QueryBox handleQueryResult={handleQueryResult} />
+        <Grid container direction="row" columnSpacing={4}>
+          <Grid item lg={5} xl={4}>
+            <Grid container direction="column" rowSpacing={6}>
+              <Grid item>
+                <QueryBox handleQueryResult={handleQueryResult} />
+              </Grid>
+              <Grid item>
+                <ReportDownload />
+              </Grid>
+            </Grid>
           </Grid>
-          <Grid item lg={6} xl={8}>
+          <Grid item lg={7} xl={8}>
             {/* <QueryPlot queryResultJson={queryResult} /> */}
             {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
           </Grid>

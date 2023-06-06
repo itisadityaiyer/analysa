@@ -23,14 +23,14 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: "#27D507",
+      main: "#6941c6",
     },
     text: {
       primary: "#000000",
       secondary: "#626262",
     },
     custom: {
-      main: "#FF8ECB",
+      main: "#6941c6",
       light: "#D3D3D3",
     },
     button: {
