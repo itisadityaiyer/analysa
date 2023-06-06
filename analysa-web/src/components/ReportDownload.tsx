@@ -31,8 +31,8 @@ const ReportDownload = () => {
           </Grid>
           <Grid item>
             <Typography variant="subtitle1">
-              Have our AI Engine analyze of your experiment and generate a
-              report as if it were written by an seasoned data scientist.
+              Have our AI Engine analyze your experiment and generate a report
+              similar to one written by a seasoned data scientist.
             </Typography>
           </Grid>
           <Grid item>
