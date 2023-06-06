@@ -77,9 +77,11 @@ const QueryBox = ({ handleQueryResult }) => {
       <Box height={12}></Box>
       <Paper elevation={5}>
         <form onSubmit={handleSubmit}>
-          <Grid container direction="column" rowSpacing={1.5} padding={3}>
+          <Grid container direction="column" rowSpacing={1.5} padding={4}>
             <Grid item>
-              <Typography variant="h5">Metric deltas</Typography>
+              <Typography variant="h5" padding={0}>
+                Metric deltas
+              </Typography>
             </Grid>
             <Grid item>
               <Typography variant="subtitle1">
@@ -149,11 +151,6 @@ const QueryBox = ({ handleQueryResult }) => {
               <Button type="submit" variant="outlined">
                 Submit
               </Button>
-            </Grid>
-            <Grid item>
-              <Typography className="message">
-                {message ? message : ""}
-              </Typography>
             </Grid>
           </Grid>
         </form>

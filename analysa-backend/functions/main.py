@@ -18,9 +18,9 @@ app = initialize_app()
 DEFAULT_TARGET_COLUMNS = [
     "watch_time",
     "pause_count",
-    "avg_watch_time_per_video",
-    "Webpage_clicks_per_session",
-    "Videos_completed_per_session",
+    "watch_time_per_vid",
+    "ad_clickthrough",
+    "videos_watched",
 ]
 
 
@@ -119,7 +119,7 @@ def request_confidence_intervals(req: https_fn.Request) -> https_fn.Response:
     endDate = req.args.get("endDate")
 
     bucket = storage.bucket("deep-lore-388606.appspot.com")
-    blob = bucket.blob("youtube_synthetic_data.csv")
+    blob = bucket.blob("youtube_synthetic_data5.csv")
     csv = blob.download_as_bytes()
 
     intervals = generate_confidence_intervals(
