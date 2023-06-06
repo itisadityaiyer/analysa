@@ -39,7 +39,7 @@ const NavBar = () => {
         <MenuItem icon={<FlagCircleOutlined color="primary" />}>
           <Typography>Feature Flagging</Typography>
         </MenuItem>
-        <MenuItem icon={<DynamicFeedRounded color="primary" />}>
+        <MenuItem active={true} icon={<DynamicFeedRounded color="primary" />}>
           <Typography>Experiment Review</Typography>
         </MenuItem>
         <MenuItem icon={<AssessmentIcon color="primary" />}>

@@ -4,7 +4,13 @@ import NavBar from "./NavBar";
 
 const PageWrapper = () => {
   return (
-    <Grid container direction="row" columnSpacing={2} wrap="nowrap">
+    <Grid
+      container
+      direction="row"
+      columnSpacing={2}
+      wrap="nowrap"
+      height={"100%"}
+    >
       <Grid item width="270px">
         <NavBar />
       </Grid>
