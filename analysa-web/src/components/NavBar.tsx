@@ -15,7 +15,7 @@ const NavBar = () => {
 
   return (
     <Sidebar
-      style={{ height: "100vh" }}
+      style={{ height: "100%" }}
       collapsed={collapsedMenu}
       rootStyles={{
         [`.${sidebarClasses.container}`]: {

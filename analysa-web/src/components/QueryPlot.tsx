@@ -5,20 +5,27 @@ import Chart from "react-google-charts";
 const lower_bound = "lower_bound";
 const upper_bound = "upper_bound";
 
-const QueryPlot = ({ queryResultJson }) => {
-  let data = [["Metric", "", "", "", '"']];
+const QueryPlot = ({
+  queryResultJsonString,
+}: {
+  queryResultJsonString: any;
+}) => {
+  let queryResultJson = JSON.parse(queryResultJsonString);
+  let data: Array<Array<string | number | undefined>> = [
+    ["Metric", "", "", "", '"'],
+  ];
   let queryResultObject = new Map(Object.entries(queryResultJson));
   for (var metric in queryResultJson) {
     queryResultObject.set(
       metric,
-      new Map(Object.entries(queryResultObject.get(metric)))
+      new Map(Object.entries(queryResultObject.get(metric) as Object))
     );
     data.push([
       "",
-      queryResultObject.get(metric).get(lower_bound),
-      queryResultObject.get(metric).get(lower_bound),
-      queryResultObject.get(metric).get(upper_bound),
-      queryResultObject.get(metric).get(upper_bound),
+      (queryResultObject.get(metric) as Map<string, number>).get(lower_bound),
+      (queryResultObject.get(metric) as Map<string, number>).get(lower_bound),
+      (queryResultObject.get(metric) as Map<string, number>).get(upper_bound),
+      (queryResultObject.get(metric) as Map<string, number>).get(upper_bound),
     ]);
   }
   const options = {

@@ -1,5 +1,4 @@
 import { Box, Container } from "@mui/system";
-import Trip from "./components/Trip";
 import { useTheme } from "@mui/material/styles";
 import {
   Button,

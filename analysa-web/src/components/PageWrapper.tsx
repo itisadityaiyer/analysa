@@ -1,6 +1,6 @@
 import { Box, Container, Grid, Paper, Typography } from "@mui/material";
 import MainPage from "./MainPage";
-import NavBar from "./Navbar";
+import NavBar from "./NavBar";
 
 const PageWrapper = () => {
   return (

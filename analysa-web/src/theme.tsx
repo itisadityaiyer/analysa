@@ -29,15 +29,6 @@ const theme = createTheme({
       primary: "#000000",
       secondary: "#626262",
     },
-    custom: {
-      main: "#6941c6",
-      light: "#D3D3D3",
-    },
-    button: {
-      primary: "#E933BE",
-      text: "white",
-      outline: "#FF8ECB",
-    },
     error: {
       main: red.A400,
     },

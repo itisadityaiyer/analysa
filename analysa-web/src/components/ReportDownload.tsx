@@ -37,7 +37,7 @@ const ReportDownload = () => {
           </Grid>
           <Grid item>
             <Button href="Analysa-Report.pdf" variant="outlined" download>
-              Download Report
+              Generate Report
             </Button>
           </Grid>
         </Grid>

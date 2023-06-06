@@ -21,7 +21,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { useState } from "react";
 import dayjs, { Dayjs } from "dayjs";
 
-const QueryBox = ({ handleQueryResult }) => {
+const QueryBox = ({ handleQueryResult }: { handleQueryResult: any }) => {
   const queryUrl =
     "https://request-confidence-intervals-ybmnqf5yga-uc.a.run.app";
 
@@ -35,14 +35,14 @@ const QueryBox = ({ handleQueryResult }) => {
   ]);
   const [message, setMessage] = useState("");
 
-  let handleSubmit = async (e) => {
+  let handleSubmit = async (e: any) => {
     e.preventDefault();
     console.log("entered handle Submit");
     let queryArgsPairs = [
       ["comparisonA", comparisonA],
       ["comparisonB", comparisonB],
-      ["startDate", queryDateRange[0].format("YYYY-MM-DD")],
-      ["endDate", queryDateRange[1].format("YYYY-MM-DD")],
+      ["startDate", queryDateRange[0]!.format("YYYY-MM-DD")],
+      ["endDate", queryDateRange[1]!.format("YYYY-MM-DD")],
     ];
     let queryArgsPairsMapped = queryArgsPairs.map((x) => x.join("="));
     let queryArgsString = queryArgsPairsMapped.join("&");

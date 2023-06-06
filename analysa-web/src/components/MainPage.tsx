@@ -7,7 +7,6 @@ import ReportDownload from "./ReportDownload";
 import Header from "./Header";
 
 const MainPage = () => {
-  const [queryResult, setQueryResult] = useState("");
   const [queryResultString, setQueryResultString] = useState("");
 
   const handleQueryResult = (resJson: JSON) => {
@@ -15,7 +14,6 @@ const MainPage = () => {
     console.log(resString);
     console.log("adityaiyer: in handleQueryResult");
     console.log(new Map(Object.entries(resJson)));
-    setQueryResult(resJson);
     setQueryResultString(resString);
   };
 
@@ -42,11 +40,15 @@ const MainPage = () => {
             </Grid>
           </Grid>
           <Grid item lg={7} xl={8}>
-            {/* <QueryPlot queryResultJson={queryResult} /> */}
-            {queryResult ? <QueryPlot queryResultJson={queryResult} /> : ""}
+            {queryResultString ? (
+              <QueryPlot queryResultJsonString={queryResultString} />
+            ) : (
+              ""
+            )}
           </Grid>
         </Grid>
       </Grid>
+      <Grid item height={"8em"} />
     </Grid>
   );
 };
